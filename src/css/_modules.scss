@@ -1,0 +1,279 @@
+/* ==========================================================================
+   Modules
+   ========================================================================== */
+
+h1 {
+    color: $black;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	@include prefixer(perspective, 1000);
+	position: relative;
+}
+
+/* flip when pressed */
+.rotate {
+	@include prefixer(transform, rotateY(180deg));
+}
+
+.flip-container,
+.front,
+.back {
+	width: 400px;
+	height: 600px;
+}
+
+/* flip speed goes here */
+.flipper {
+	@include prefixer(transition, 0.6s);
+	@include prefixer(transform-style, preserve-3d);
+}
+
+/* hide back of pane during swap */
+.front,
+.back {
+	@include prefixer(backface-visibility, hidden);
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 10px;
+	border: 1px solid #ecf0f1;
+	background-color: $white;
+	@include box-shadow(0, 0, 7px, rgba(236, 240, 241,1.0));
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+	@include prefixer(transform, rotateY(180deg));
+}
+
+.controls-container {
+	margin-bottom: 1em;
+	margin-top: 5em;
+	position: relative;
+}
+
+.center-container {
+	width: 140px;
+	margin: 0 auto;
+}
+
+a[data-link="flipBtn"] {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	float: left;
+	margin-left: 10px;
+	border-radius: 50%;
+	border: 1px solid #ecf0f1;
+	background-color: $white;
+	@include box-shadow(0, 0, 7px, rgba(236, 240, 241,1.0));
+}
+
+a[data-link="flipBtn"].selected {
+	@include box-shadow(0, 0, 10px, rgba(127, 140, 141,1.0));
+}
+
+.appleLogo,
+.androidLogo {
+	height: 30px;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.appleLogo {
+	bottom: 3px;
+}
+
+.androidLogo {
+	bottom: 0;
+}
+
+.card-header-android,
+.card-header-ios {
+	position: relative;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	height: 150px;
+	padding: 10px 20px;
+
+	& h3 {
+		position: absolute;
+		bottom: 0;
+		color: $white;
+		font-size: 24px;
+	}
+}
+
+.card-header-android {
+	background-color: #27ae60;
+}
+
+.card-header-ios {
+	background-color: #2c3e50;
+}
+
+.buckets-android,
+.buckets-ios {
+	margin-top: 20px;
+}
+
+.bucket {
+	position: relative;
+	text-align: right;
+	margin-bottom: 5px;
+	padding: 0 20px;
+
+	& li {
+		position: relative;
+		display: inline-block;
+	}
+
+	& .name {
+		position: absolute;
+		left: 20px;
+		bottom: 10px;
+		text-transform: uppercase;
+		font-size: 14px;
+		font-weight: bold;
+	}
+
+
+	& .width {
+		width: 150px;
+		@include box-shadow(0, -2px, 0, rgba(149, 165, 166, 1.0), inset);
+
+		& input,
+		& label {
+			display: block;
+			font-size: 36px;
+			line-height: 36px;
+			margin: 0;
+			border: 0;
+			border-bottom: 2px solid transparent;
+			text-align: left;
+			padding: 5px;
+
+		}
+
+		& input {
+			position: relative;
+			width: 100%;
+			opacity: 0;
+			z-index: 3;
+		}
+
+		& input:focus {
+			opacity: 1;
+			outline: none;
+			border-bottom: 2px solid;
+			background-color: #f6f9ff;
+		}
+
+		& label {
+			position: absolute;
+			bottom: 0;
+			z-index: 1;
+		}
+
+		& label::after {
+			content: 'px';
+			text-transform: uppercase;
+			font-size: 14px;
+			line-height: 14px;
+			position: absolute;
+			display: block;
+			bottom: 8px;
+			left: 100%;
+			color: #838383;
+		}
+	}
+
+	& span {
+		font-weight: normal;
+		font-style: italic;
+		color: #838383;
+	}
+}
+
+.buckets-android .width input:focus {
+		color: #27ae60;
+		border-color: #27ae60;
+}
+
+.buckets-ios .width input:focus {
+		color: #2c3e50;
+		border-color: #2c3e50;
+}
+
+.buckets-android .bucket-base > .name::before,
+.buckets-ios .bucket-1 > .name::before,
+.detector::before {
+		content: '';
+		display: inline-block;
+		border-radius: 50%;
+		width: 10px;
+		height: 10px;
+		margin-right: 5px;
+}
+
+.detector[data-name="ios"]::before {
+		background-color: #2c3e50;
+}
+
+.detector[data-name="android"]::before {
+		background-color: #27ae60;
+}
+
+.buckets-ios .bucket-1 > .name::before {
+		background-color: #2c3e50;
+}
+
+.buckets-android .bucket-base > .name::before {
+		background-color: #27ae60;
+}
+
+.detector {
+	position: absolute;
+	bottom: 0;
+	color: $black;
+	font-size: 14px;
+	line-height: 20px;
+	font-style: italic;
+	margin-left: 20px;
+}
+
+.bot {
+	width: 50px;
+	height: 50px;
+	fill: $red;
+}
+
+/**
+ * Extend button expamle
+ */
+
+
+%btn-base {
+}
+
+.btn {
+    @extend %btn-base;
+}
+
+.btn__submit-form {
+    @extend %btn-base;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

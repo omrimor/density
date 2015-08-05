@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="" data-placeholder-focus="false">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Density con</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" -->
+        <link rel="stylesheet" href="public/css/main.min.css">
+        <script src="vendor/js/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!--[if lte IE 8]><img src="../img/body-background.jpg" class="ie8-bg"><![endif]-->
+
+        <div class="page-wrap">
+          <div class="controls-container">
+            <div class="center-container cf">
+              <a href="#" id="ios" data-link="flipBtn">
+                <img class="appleLogo" src="images/apple.svg" alt="apple density">
+              </a>
+              <a href="#" id="android" data-link="flipBtn">
+                <img class="androidLogo" src="images/bot.svg" alt="android density">
+              </a>
+            </div>
+          </div>
+          <div class="card-container cf">
+            <div class="flip-container">
+                <div class="flipper">
+                    <div class="front">
+                      <div class="card-header-android">
+                        <h3>Android Density Converter</h3>
+                      </div>
+                      <div class="buckets-android"></div>
+                      <p class="detector">1px = 1dp</p>
+                    </div>
+                    <div class="back">
+                      <div class="card-header-ios">
+                        <h3>iOS Density Converter</h3>
+                      </div>
+                      <div class="buckets-ios"></div>
+                      <p class="detector">1px = 1pt</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="vendor/js/jquery-1.11.1.min.js"><\/script>')</script>
+        <script src="public/js/main.min.js"></script>
+    </body>
+</html>

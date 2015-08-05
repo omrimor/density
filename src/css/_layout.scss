@@ -1,0 +1,16 @@
+/* ==========================================================================
+   Page layout
+   ========================================================================== */
+
+html {
+   font-family: $font-family-body;
+   font-size: $font-size-base;
+   line-height: $line-height-base;
+   color: $black;
+   background-color: #ecf0f1;
+}
+
+.page-wrap {
+	margin: 0 auto;
+	max-width: 400px;
+}
